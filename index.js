@@ -16,7 +16,7 @@
       renderer: renderer
     });
     document.getElementById('dummy').innerHTML = marked(document.getElementById('md').value);
-    return document.getElementById('wp').value = document.getElementById('dummy').innerHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    return document.getElementById('wp').value = document.getElementById('dummy').innerHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
   };
 
   document.getElementById('convert').addEventListener('click', convert);
