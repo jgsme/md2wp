@@ -3,6 +3,7 @@ jade = require 'gulp-jade'
 coffee = require 'gulp-coffee'
 styl = require 'gulp-stylus'
 conn = require 'gulp-connect'
+deploy = require 'gulp-gh-pages'
 
 paths =
   jade: 'src/*.jade'
@@ -36,3 +37,7 @@ gulp.task 'watch', ['default'], ->
   gulp.watch paths.coffee, ['coffee']
   conn.server
     root: 'build'
+
+gulp.task 'deploy', ['default'], ->
+  gulp.src 'build'
+    .pipe deploy()
