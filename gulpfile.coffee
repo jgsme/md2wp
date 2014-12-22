@@ -39,5 +39,6 @@ gulp.task 'watch', ['default'], ->
     root: 'build'
 
 gulp.task 'deploy', ['default'], ->
-  gulp.src 'build'
-    .pipe deploy()
+  gulp.src './build/*'
+    .pipe deploy
+      cacheDir: 'tmp'
