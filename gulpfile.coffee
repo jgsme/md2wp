@@ -26,7 +26,7 @@ gulp.task 'styl', ->
     .pipe gulp.dest(paths.dest)
 
 gulp.task 'copy', ->
-  gulp.src ['lib/marked/lib/marked.js']
+  gulp.src ['lib/marked/lib/marked.js', 'CNAME']
     .pipe gulp.dest(paths.dest)
 
 gulp.task 'default', ['jade', 'styl', 'coffee', 'copy']
