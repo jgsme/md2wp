@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title md2wp
+    link(href='http://yui.yahooapis.com/pure/0.5.0/pure-min.css', rel='stylesheet', type='text/css')
+    link(href='index.css', rel='stylesheet', type='text/css')
+    script(src='marked.js', type='text/javascript')
+  body
+    .pure-g
+      #markdownPane.pure-u-10-24
+        h2 markdown
+        textarea#md(placeholder='# Some markdown')
+      #convertPane.pure-u-4-24
+        #buttonWrapper
+          button#convert =>
+      #wordpressPane.pure-u-10-24
+        h2 wordpress
+        #dummy
+        textarea#wp(placeholder='<h1>Some markdown</h1>')
+    footer
+      h1 md2wp
+    script(src='index.js', type='text/javascript')
