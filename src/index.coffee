@@ -16,7 +16,7 @@ convert = (event)->
     renderer: renderer
 
   document.getElementById('dummy').innerHTML = marked document.getElementById('md').value
-  document.getElementById('wp').value = document.getElementById('dummy').innerHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+  document.getElementById('wp').value = document.getElementById('dummy').innerHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&')
 
 document.getElementById('convert').addEventListener 'click', convert
 document.getElementById('wp').addEventListener 'focus', (event)-> @select()
