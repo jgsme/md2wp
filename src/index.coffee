@@ -1,7 +1,15 @@
 renderer = new marked.Renderer()
 renderer.code = (code, lang)->
+  code = code.replace /&/g, '&amp;'
+    .replace /</g, '&lt;'
+    .replace />/g, '&gt;'
+    .replace /"/g, '&quot;'
+    .replace /'/g, '&#39;'
+
   """
-  <pre class="lang:#{if lang? then lang else 'default'} decode:true">#{code}</pre>
+  <pre class="lang:#{if lang? then lang else 'default'} decode:true">
+  #{code}
+  </pre>
 
   """
 
@@ -11,12 +19,12 @@ renderer.heading = (text, level)->
 
   """
 
+renderer.codespan = (code)-> "<span class=\"lang:default decode:true crayon-inline \">#{code}</span>"
+
 convert = (event)->
   marked.setOptions
     renderer: renderer
-
-  document.getElementById('dummy').innerHTML = marked document.getElementById('md').value
-  document.getElementById('wp').value = document.getElementById('dummy').innerHTML.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+  document.getElementById('wp').value = marked document.getElementById('md').value
 
 document.getElementById('convert').addEventListener 'click', convert
 document.getElementById('wp').addEventListener 'focus', (event)-> @select()
